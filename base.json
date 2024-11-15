@@ -1,0 +1,36 @@
+{
+  "user_data":
+  {   
+      "user_edited_title":,
+      "user_dl_date_time":,
+      "user_notes":,
+      "user_tags":[],
+  },
+  "raw_data":
+  {
+      "title":,
+      "target_url":,
+      "thumbnail_url":,
+      "uploader":,
+      "uploader_id":,
+      "uploader_url":,
+      "channel":,
+      "channel_id":,
+      "channel_url":,
+      "duration":,
+      "serial_duration":,
+      "upload_date":,
+      "release_date":,
+      "video_id":,
+      "site_name":,
+      "this_video_quolity":,
+      "video_quolity":,
+      "audio_quolity":,
+      "video_width":,
+      "video_height":,
+      "age_limit":,
+      "categories":[],
+      "video_tags":[],
+      "description":[],
+  },
+}
