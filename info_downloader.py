@@ -1,7 +1,6 @@
 # info_downloader.py
 
-import json
-import datetime as dt
+import json 
 from datetime import datetime, timedelta
 
 class InfoDownloader:
