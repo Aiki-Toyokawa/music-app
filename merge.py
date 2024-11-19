@@ -2,24 +2,19 @@
 
 import os
 import sys
-from video_downloader import VideoDownloader
-from info_downloader import InfoDownloader
-from thumbnail_downloader import ThumbnailDownloader
+from video_downloader import download_video
+from info_downloader import info_extract
+from thumbnail_downloader import download_thumbnail
 
 def main():
     # ベタ打ちで入力するYouTube動画のURL
-    video_url = 'https://www.youtube.com/watch?v=ePTSW8ImP-M'
+    video_url = 'https://www.youtube.com/watch?v=7QxG722bXjM'
 
     # ダウンロードディレクトリの設定
     download_dir = 'dl'
 
-    # 各コンポーネントの初期化
-    video_downloader = VideoDownloader(download_dir=download_dir)
-    info_downloader = InfoDownloader()
-    thumbnail_downloader = ThumbnailDownloader(download_dir=download_dir)
-
     # 動画のダウンロード
-    info_dict = video_downloader.download_video(video_url)
+    info_dict = download_video(video_url, download_dir=download_dir)
     if not info_dict:
         print("動画のダウンロードに失敗しました。")
         sys.exit(1)
@@ -34,20 +29,28 @@ def main():
     video_dir = os.path.join(download_dir, video_id)
     info_json_path = os.path.join(video_dir, 'info.json')
 
-    info_data = info_downloader.extract_info(info_dict, output_filename=info_json_path)
+    # YouTube動画のURLを再度渡す必要があるため、info_extract関数を使用
+    target_url = info_dict.get('webpage_url', video_url)
+    info_data = info_extract(target_url, output_filename=info_json_path)
     if not info_data:
         print("メタデータの抽出に失敗しました。")
         sys.exit(1)
 
     # サムネイルのダウンロード
-    thumbnail_url = info_data['raw_data'].get('thumbnail_url', 'Unknown')
-    thumbnail_path = thumbnail_downloader.download_thumbnail(thumbnail_url, video_id)
+    thumbnail_url = info_data['raw_data'].get('thumbnail_url', '不明')
+    thumbnail_path = download_thumbnail(thumbnail_url, video_id, download_dir=download_dir)
     if thumbnail_path:
         print("サムネイルのダウンロードが完了しました。")
     else:
         print("サムネイルのダウンロードに失敗しました。")
 
     print("\nすべての処理が完了しました。")
+    print(f"動画ファイル: {os.path.join(video_dir, 'music.mp4')}")
+    print(f"メタデータ: {info_json_path}")
+    if thumbnail_path:
+        print(f"サムネイル画像: {thumbnail_path}")
+    else:
+        print("サムネイル画像: なし")
 
 if __name__ == "__main__":
     main()
