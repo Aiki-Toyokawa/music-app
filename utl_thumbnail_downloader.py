@@ -3,8 +3,7 @@
 import requests
 import os
 
-def download_thumbnail(thumbnail_url, video_id, download_dir='dl'):
-    """
+"""
     サムネイル画像をダウンロードし、指定されたディレクトリに保存します。
 
     Parameters:
@@ -14,7 +13,9 @@ def download_thumbnail(thumbnail_url, video_id, download_dir='dl'):
 
     Returns:
         str: サムネイル画像の保存パス。失敗した場合はNone。
-    """
+"""
+
+def download_thumbnail(thumbnail_url, video_id, download_dir='dl'):
     if not thumbnail_url or thumbnail_url == '不明':
         print("サムネイルURLが提供されていません。")
         return None

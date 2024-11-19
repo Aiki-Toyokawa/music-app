@@ -2,12 +2,6 @@
 
 import yt_dlp
 import os
-import sys
-import io
-
-# 文字化け防止のため、標準出力と標準エラー出力をUTF-8に設定
-sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
-sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
 
 def is_valid_youtube_url(url):
     """
