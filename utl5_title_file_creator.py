@@ -1,4 +1,4 @@
-# title_file_creator.py
+# utl5_title_file_creator.py
 
 import os
 import re
@@ -34,10 +34,11 @@ def create_title_file(video_title, video_dir):
     title_file_path = os.path.join(video_dir, title_filename)
 
     try:
+        print(f"タイトルファイルの作成を開始します...\npath: {title_file_path}")
         # ファイルを作成し、タイトルを書き込む
         with open(title_file_path, 'w', encoding='utf-8') as f:
-            f.write("## このファイルは識別しやすくするファイルです\n" + "title : " + video_title)
-        print(f"タイトルファイルを作成しました: {title_file_path}")
+            f.write("## このファイルは識別しやすくするデバッグ用ファイルです\n" + "title : " + video_title)
+        print(f"タイトルファイルを作成完了: {title_file_path}")
         return title_file_path
     except OSError as e:
         print(f"タイトルファイルの作成中にエラーが発生しました: {e}")

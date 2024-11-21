@@ -1,20 +1,20 @@
-# info_downloader.py
+# utl1_info_downloader.py
 
 import yt_dlp
 import json
 from datetime import datetime, timedelta
 
+"""
+YouTube動画の情報を抽出し、JSONファイルに保存します。
+Parameters:
+    video_url (str): 情報を抽出するYouTube動画のURL。
+    output_filename (str): 出力するJSONファイルのパス。
+Returns:
+    dict: 抽出された情報データ。
+"""
+
 def download_info(video_url, output_filename="info.json"):
-    """
-    YouTube動画の情報を抽出し、JSONファイルに保存します。
 
-    Parameters:
-        video_url (str): 情報を抽出するYouTube動画のURL。
-        output_filename (str): 出力するJSONファイルのパス。
-
-    Returns:
-        dict: 抽出された情報データ。
-    """
     # yt-dlpのオプションを設定
     ydl_opts = {
         'skip_download': True,  # 動画をダウンロードせずに情報のみ取得
@@ -106,9 +106,10 @@ def download_info(video_url, output_filename="info.json"):
 
     # JSONファイルに書き込む
     try:
+        print(f"動画情報をjsonファイルに書き込みます...\npath: {output_filename}")
         with open(output_filename, 'w', encoding='utf-8') as json_file:
             json.dump(output_data, json_file, ensure_ascii=False, indent=4)
-        print(f"情報が {output_filename} に保存されました。")
+        print(f"動画情報の書き込み完了: {output_filename}")
     except IOError as e:
         print(f"ファイルの書き込み中にエラーが発生しました: {e}")
         return None

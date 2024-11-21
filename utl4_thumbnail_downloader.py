@@ -1,4 +1,4 @@
-# thumbnail_downloader.py
+# utl4_thumbnail_downloader.py
 
 import requests
 import os
@@ -21,7 +21,7 @@ def download_thumbnail(thumbnail_url, video_id, download_dir='dl'):
         return None
 
     try:
-        print(f"サムネイル画像のダウンロードを開始します: {thumbnail_url}")
+        print(f"サムネイルのダウンロードを開始します...\npath: {thumbnail_url}")
         response = requests.get(thumbnail_url, timeout=10)
         response.raise_for_status()
         video_dir = os.path.join(download_dir, video_id)
@@ -29,7 +29,7 @@ def download_thumbnail(thumbnail_url, video_id, download_dir='dl'):
         thumbnail_path = os.path.join(video_dir, 'thumbnail.png')
         with open(thumbnail_path, 'wb') as f:
             f.write(response.content)
-        print(f"サムネイル画像を保存しました: {thumbnail_path}")
+        print(f"サムネイル画像のダウンロード完了: {thumbnail_path}")
         return thumbnail_path
     except requests.RequestException as e:
         print(f"サムネイルのダウンロード中にエラーが発生しました: {e}")

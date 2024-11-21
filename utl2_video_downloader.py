@@ -1,4 +1,4 @@
-# video_downloader.py
+# utl2_video_downloader.py
 
 import yt_dlp
 import os
