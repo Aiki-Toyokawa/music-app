@@ -19,7 +19,7 @@ def main():
     # 1. 初期設定
     # ---------------------------
     download_dir = 'dl'  # ダウンロードディレクトリ
-    video_url = 'https://www.youtube.com/watch?v=EG_BVGUPxsI'  # 動画のURL
+    video_url = 'https://www.youtube.com/watch?v=KT_uYG-sNOk&list=RDKT_uYG-sNOk&start_radio=1'  # 動画のURL
 
 
     # ---------------------------
