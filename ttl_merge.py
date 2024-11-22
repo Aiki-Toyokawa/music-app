@@ -19,7 +19,7 @@ def main():
     # 1. 初期設定
     # ---------------------------
     download_dir = 'dl'  # ダウンロードディレクトリ
-    video_url = 'https://www.youtube.com/watch?v=KT_uYG-sNOk&list=RDKT_uYG-sNOk&start_radio=1'  # 動画のURL
+    video_url = 'https://www.youtube.com/watch?v=KT_uYG-sNOk'  # 動画のURL
 
 
     # ---------------------------
@@ -48,6 +48,7 @@ def main():
     video_dir_path = os.path.join(download_dir, video_id)
     info_json_path = os.path.join(video_dir_path, 'info.json')
     target_url = info_dict.get('webpage_url', video_url)
+    
     info_data = download_info(target_url, output_filename=info_json_path)
 
 

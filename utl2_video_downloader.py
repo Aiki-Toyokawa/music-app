@@ -3,26 +3,26 @@
 import yt_dlp
 import os
 
-"""
-指定されたYouTube動画をダウンロードし、メタデータを生成します。
-
-Parameters:
-    video_url (str): ダウンロードするYouTube動画のURL。
-    download_dir (str): ダウンロード先のディレクトリパス。
-
-Returns:
-    dict: ダウンロードした動画の情報辞書 (`info_dict`)。
-"""
+# ------------------------------------------------------------------
+# 指定されたYouTube動画をダウンロードし、メタデータを生成します。
+# 
+# Parameters:
+#     video_url (str): ダウンロードするYouTube動画のURL。
+#     download_dir (str): ダウンロード先のディレクトリパス。
+#
+# Returns:
+#     dict: ダウンロードした動画の情報辞書 (`info_dict`)。
+# ------------------------------------------------------------------
 
 def download_video(video_url, download_dir='dl'):
     
-    if not ('youtube.com/watch?v=' in video_url or 'youtu.be/' in video_url):
+    if not ('youtube.com/' in video_url or 'youtu.be/' in video_url):
         print(f"無効なYoutube URLです: {video_url}")
         return None
 
     print(f"\n単一動画のダウンロードを開始します: {video_url}")
     ydl_opts = {
-        'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]',
+        'format': 'bestvideo[ext=mp4][height=144]+bestaudio[ext=m4a]/best[ext=mp4]',
         'outtmpl': os.path.join(download_dir, '%(id)s', 'music.%(ext)s'),
         'quiet': False,
         'no_warnings': False,
