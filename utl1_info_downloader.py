@@ -4,14 +4,14 @@ import yt_dlp
 import json
 from datetime import datetime, timedelta
 
-"""
-YouTube動画の情報を抽出し、JSONファイルに保存します。
-Parameters:
-    video_url (str): 情報を抽出するYouTube動画のURL。
-    output_filename (str): 出力するJSONファイルのパス。
-Returns:
-    dict: 抽出された情報データ。
-"""
+# ----------------------------------------------------
+# YouTube動画の情報を抽出し、JSONファイルに保存します。
+# Parameters:
+#     video_url (str): 情報を抽出するYouTube動画のURL。
+#     output_filename (str): 出力するJSONファイルのパス。
+# Returns:
+#     dict: 抽出された情報データ。
+# ----------------------------------------------------
 
 def download_info(video_url, output_filename="info.json"):
 

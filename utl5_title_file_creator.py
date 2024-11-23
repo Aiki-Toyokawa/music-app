@@ -3,33 +3,21 @@
 import os
 import re
 
-def sanitize_filename(filename):
-    """
-    ファイル名として使用できない文字を取り除きます。
-
-    Parameters:
-        filename (str): サニタイズするファイル名。
-
-    Returns:
-        str: サニタイズされたファイル名。
-    """
-    # Windowsで禁止されている文字: \ / : * ? " < > | 
-    # 他のOSでも一部の文字が問題となるため、共通のパターンを使用
-    return re.sub(r'[\\/*?:"<>|]', '', filename)
+# -----------------------------------------------------------------------------------
+# サニタイズされたタイトルをファイル名として、拡張子 .title を付けたファイルを作成します。
+# ファイル内には動画のタイトルを記載します。
+#
+# Parameters:
+#    video_title (str): 動画のタイトル。
+#    video_dir (str): ファイルを作成するディレクトリのパス。
+#
+# Returns:
+#    str: 作成したファイルのパス。失敗した場合はNone。
+# -----------------------------------------------------------------------------------
 
 def create_title_file(video_title, video_dir):
-    """
-    サニタイズされたタイトルをファイル名として、拡張子 .title を付けたファイルを作成します。
-    ファイル内には動画のタイトルを記載します。
 
-    Parameters:
-        video_title (str): 動画のタイトル。
-        video_dir (str): ファイルを作成するディレクトリのパス。
-
-    Returns:
-        str: 作成したファイルのパス。失敗した場合はNone。
-    """
-    sanitized_title = sanitize_filename(video_title)
+    sanitized_title = re.sub(r'[\\/*?:"<>|]', '', video_title) # サニタイズするファイル(video_title), ファイル名に使えない文字をｓ
     title_filename = f"{sanitized_title}.title"
     title_file_path = os.path.join(video_dir, title_filename)
 

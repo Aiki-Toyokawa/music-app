@@ -20,13 +20,13 @@ def main():
     # ---------------------------
     download_dir = 'dl'  # ダウンロードディレクトリ
     video_url = 'https://www.youtube.com/watch?v=KT_uYG-sNOk'  # 動画のURL
-
+    format_code = 'a'
 
     # ---------------------------
     # 2. 動画のダウンロード
     # ---------------------------
     print("動画のダウンロードを開始します...")
-    info_dict = download_video(video_url, download_dir=download_dir)
+    info_dict = download_video(video_url, download_dir, format_code)
     if not info_dict:
         print("動画のダウンロードに失敗しました。")
         sys.exit(1)
@@ -47,16 +47,15 @@ def main():
     # ---------------------------
     video_dir_path = os.path.join(download_dir, video_id)
     info_json_path = os.path.join(video_dir_path, 'info.json')
-    target_url = info_dict.get('webpage_url', video_url)
     
-    info_data = download_info(target_url, output_filename=info_json_path)
+    info_data = download_info(video_url, output_filename=info_json_path)
 
 
     # ---------------------------
     # 5. サムネイルのダウンロード
     # ---------------------------
     thumbnail_url = info_data['raw_data'].get('thumbnail_url', '不明')
-    thumbnail_path = download_thumbnail(thumbnail_url, video_id, download_dir=download_dir)
+    thumbnail_path = download_thumbnail(thumbnail_url, video_id, download_dir)
 
 
     # ---------------------------
