@@ -3,6 +3,8 @@
 import yt_dlp
 import os
 
+from utl2_1_format_map import EASY_FORMAT_MAP, build_format_string, VIDEO_FORMATS, VIDEO_RESOLUTIONS, AUDIO_FORMATS, AUDIO_QUALITIES, CODECS
+
 # ------------------------------------------------------------------
 # 指定されたYouTube動画をダウンロードし、メタデータを生成します。
 # 
@@ -14,29 +16,54 @@ import os
 #     dict: ダウンロードした動画の情報辞書 (`info_dict`)。
 # ------------------------------------------------------------------
 
-# フォーマットコードとフォーマット文字列のマッピング
-FORMAT_MAP = {
-    '0': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]',  # デフォルト
-    '1': 'bestvideo[ext=mp4][height=144]+bestaudio[ext=m4a]/best[ext=mp4]',
-    '2': 'bestvideo[ext=mp4][height=240]+bestaudio[ext=m4a]/best[ext=mp4]',
-    '3': 'bestvideo[ext=mp4][height=360]+bestaudio[ext=m4a]/best[ext=mp4]',
-    '4': 'bestvideo[ext=mp4][height=480]+bestaudio[ext=m4a]/best[ext=mp4]',
-    '5': 'bestvideo[ext=mp4][height=720]+bestaudio[ext=m4a]/best[ext=mp4]',
-    '6': 'bestvideo[ext=mp4][height=1080]+bestaudio[ext=m4a]/best[ext=mp4]',
-    '7': 'bestvideo[ext=mp4][height=1440]+bestaudio[ext=m4a]/best[ext=mp4]',
-    '8': 'bestvideo[ext=mp4][height=2160]+bestaudio[ext=m4a]/best[ext=mp4]',
-    '9': 'bestvideo[ext=mp4][height=4320]+bestaudio[ext=m4a]/best[ext=mp4]',
-    'a': 'bestaudio[ext=m4a]/best[ext=m4a]',  # 音声のみ
-}
-
 def download_video(video_url, download_dir, format_code):
     
     if not ('youtube.com/' in video_url or 'youtu.be/' in video_url):
         print(f"無効なYoutube URLです: {video_url}")
         return None
 
-    selected_format = FORMAT_MAP[format_code]
+    # ---------------------------
+    # 1. フォーマットの設定
+    # ---------------------------
+    if len(format_code) == 1 and format_code in EASY_FORMAT_MAP:
+        # easy_setting: 簡単設定を使用
+        selected_format = EASY_FORMAT_MAP[format_code]
+        print(f"Easy setting: 使用フォーマットコード '{format_code}' を選択")
+        print(f"選択されたフォーマット: {selected_format}")
+    elif len(format_code) == 5:
+        # 詳細設定: 5桁のフォーマットコード
+        video_format_code = format_code[0]
+        resolution_code = format_code[1]
+        audio_format_code = format_code[2]
+        audio_quality_code = format_code[3]
+        codec_code = format_code[4]
 
+        video_format = VIDEO_FORMATS.get(video_format_code)
+        resolution = VIDEO_RESOLUTIONS.get(resolution_code)
+        audio_format = AUDIO_FORMATS.get(audio_format_code)
+        audio_quality = AUDIO_QUALITIES.get(audio_quality_code)
+        codec = CODECS.get(codec_code)
+
+        if not (video_format and resolution and audio_format and audio_quality and codec):
+            print(f"詳細設定のフォーマットコードが無効です: {format_code}")
+            return None
+
+        selected_format = build_format_string(video_format, resolution, audio_format, audio_quality, codec)
+        print(f"詳細設定: 使用フォーマットコード '{format_code}' を選択")
+        print(f"動画形式: {video_format} ({video_format_code})")
+        print(f"動画画質: {resolution}p ({resolution_code})")
+        print(f"音声形式: {audio_format} ({audio_format_code})")
+        print(f"音声の音質: {audio_quality} ({audio_quality_code})")
+        print(f"コーデック: {codec} ({codec_code})")
+        print(f"選択されたフォーマット: {selected_format}")
+    else:
+        print(f"無効なフォーマットコードです: {format_code}")
+        return None
+    
+
+    # ---------------------------
+    # 2. 動画ダウンロード
+    # ---------------------------
     print(f"\n単一動画のダウンロードを開始します: {video_url}")
     ydl_opts = {
         'format': selected_format,

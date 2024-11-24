@@ -19,8 +19,10 @@ def main():
     # 1. 初期設定
     # ---------------------------
     download_dir = 'dl'  # ダウンロードディレクトリ
-    video_url = 'https://www.youtube.com/watch?v=KT_uYG-sNOk'  # 動画のURL
-    format_code = 'a'
+    video_url = 'https://www.youtube.com/watch?v=M5eCWUBs-1o'  # 動画のURL
+    easy_setting = True
+    format_code = '0' if easy_setting else '01234'
+
 
     # ---------------------------
     # 2. 動画のダウンロード
@@ -73,8 +75,8 @@ def main():
     print(f"タイトル: {video_title}")
     print(f"メタデータ: {info_json_path}")
     print(f"動画ファイル: {os.path.join(video_dir_path, 'music.mp4')}")
-    print(f"サムネイル画像: {thumbnail_path}" if thumbnail_path else print("サムネイル画像: なし"))  # サムネイル画像あるなし三項演算子
-    print(f"タイトルファイル: {title_file_path}" if title_file_path else print("タイトルファイル: なし")) # タイトルファイルあるなし三項演算子
+    print(f"サムネイル画像: {thumbnail_path}" if thumbnail_path else "サムネイル画像: なし")  # サムネイル画像あるなし三項演算子
+    print(f"タイトルファイル: {title_file_path}" if title_file_path else "タイトルファイル: なし") # タイトルファイルあるなし三項演算子
 
 
 if __name__ == "__main__":
