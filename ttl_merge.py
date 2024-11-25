@@ -21,7 +21,7 @@ def main():
     download_dir = 'dl'  # ダウンロードディレクトリ
     video_url = 'https://www.youtube.com/watch?v=M5eCWUBs-1o'  # 動画のURL
     easy_setting = True
-    format_code = '0' if easy_setting else '01234'
+    format_code = '0' if easy_setting else '01234'  # 簡単設定 or 動画形式, 画質, 音声形式, 音質, コーデック
 
 
     # ---------------------------
@@ -29,8 +29,7 @@ def main():
     # ---------------------------
     print("動画のダウンロードを開始します...")
     info_dict = download_video(video_url, download_dir, format_code)
-    if not info_dict:
-        print("動画のダウンロードに失敗しました。")
+    if not info_dict:   
         sys.exit(1)
 
 
@@ -41,7 +40,6 @@ def main():
     if not video_id:
         print("動画IDが取得できませんでした。")
         sys.exit(1)
-    print(f"動画ID: {video_id}")
 
 
     # ---------------------------
