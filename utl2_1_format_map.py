@@ -1,13 +1,16 @@
 # utl2_1_format_map.py
 
-# 動画形式のマッピング
+# 動画形式のマッピング 0
 VIDEO_FORMATS = {
     '0': 'mp4',
     '1': 'webm',
-    # 必要に応じて追加
+    '2': 'flv',
+    '3': 'mkv',
+    '4': 'avi',
+    '5': 'mov',
 }
 
-# 動画の画質のマッピング
+# 動画の画質のマッピング 1
 VIDEO_RESOLUTIONS = {
     '0': '144',
     '1': '240',
@@ -21,43 +24,48 @@ VIDEO_RESOLUTIONS = {
     # 必要に応じて追加
 }
 
-# 音声形式のマッピング
+# 音声形式のマッピング 2
 AUDIO_FORMATS = {
     '0': 'm4a',
     '1': 'webm',
     '2': 'mp3',
-    # 必要に応じて追加
+    '3': 'opus',
+    '4': 'aac',
+    '5': 'flac',
+    '6': 'wav',
 }
 
-# 音声の音質のマッピング
+# 音声の音質のマッピング 3
 AUDIO_QUALITIES = {
-    '0': '128k',
-    '1': '192k',
-    '2': '256k',
-    '3': '320k',
-    # 必要に応じて追加
+    '1': '64k',
+    '2': '96k',
+    '3': '128k',
+    '4': '160k',
+    '5': '192k',
+    '6': '256k',
+    '7': '320k',
+    '8': '384k',
 }
 
-# コーデックのマッピング
+# コーデックのマッピング 4
 CODECS = {
     '0': 'h264',
     '1': 'vp9',
     '2': 'av1',
-    # 必要に応じて追加
+    '3': 'h265',
+    '4': 'vp8',
+    '5': 'theora',
+    '6': 'mpeg4',
 }
 
 # easy_setting が True の場合のフォーマットマッピング
 EASY_FORMAT_MAP = {
     '0': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]',  # デフォルト
     '1': 'bestvideo[ext=mp4][height=144]+bestaudio[ext=m4a]/best[ext=mp4]',
-    '2': 'bestvideo[ext=mp4][height=240]+bestaudio[ext=m4a]/best[ext=mp4]',
     '3': 'bestvideo[ext=mp4][height=360]+bestaudio[ext=m4a]/best[ext=mp4]',
     '4': 'bestvideo[ext=mp4][height=480]+bestaudio[ext=m4a]/best[ext=mp4]',
     '5': 'bestvideo[ext=mp4][height=720]+bestaudio[ext=m4a]/best[ext=mp4]',
     '6': 'bestvideo[ext=mp4][height=1080]+bestaudio[ext=m4a]/best[ext=mp4]',
-    '7': 'bestvideo[ext=mp4][height=1440]+bestaudio[ext=m4a]/best[ext=mp4]',
-    '8': 'bestvideo[ext=mp4][height=2160]+bestaudio[ext=m4a]/best[ext=mp4]',
-    '9': 'bestvideo[ext=mp4][height=4320]+bestaudio[ext=m4a]/best[ext=mp4]',
     'a': 'bestaudio[ext=m4a]/best[ext=m4a]',  # 音声のみ
 }
 

@@ -20,7 +20,7 @@ def main():
     # ---------------------------
     download_dir = 'dl'  # ダウンロードディレクトリ
     video_url = 'https://www.youtube.com/watch?v=M5eCWUBs-1o'  # 動画のURL
-    easy_setting = True
+    easy_setting = False
     format_code = '0' if easy_setting else '01234'  # 簡単設定 or 動画形式, 画質, 音声形式, 音質, コーデック
 
 
