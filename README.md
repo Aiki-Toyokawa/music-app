@@ -10,3 +10,8 @@
 
 - ttl : total
 - utl : utility
+
+
+やること
+- video_download_pathの命名変更と引数変更
+- utl3の削除
