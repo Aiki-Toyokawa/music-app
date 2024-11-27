@@ -15,7 +15,7 @@ import os
 #     str: サムネイル画像の保存パス。失敗した場合はNone。
 # -----------------------------------------------------------------
 
-def download_thumbnail(thumbnail_url, video_id, download_dir='dl'):
+def download_thumbnail(thumbnail_url, video_id, download_dir):
     if not thumbnail_url or thumbnail_url == '不明':
         print("サムネイルURLが提供されていません。")
         return None
