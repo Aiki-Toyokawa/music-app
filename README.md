@@ -12,6 +12,13 @@
 - utl : utility
 
 
-やること
-- video_download_pathの命名変更と引数変更
+やること□
 - utl3の削除
+- utlの順序変更
+
+- 優先度低い
+  - リトライ機能
+
+
+やったこと☑
+- video_download_pathの命名変更と引数変更
