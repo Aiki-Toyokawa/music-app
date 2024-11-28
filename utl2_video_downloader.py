@@ -1,7 +1,7 @@
 # utl2_video_downloader.py
 
-import yt_dlp
 import os
+import yt_dlp
 
 from utl2_1_format_map import EASY_FORMAT_MAP, build_format_string, VIDEO_FORMATS, VIDEO_RESOLUTIONS, AUDIO_FORMATS, AUDIO_QUALITIES, CODECS
 

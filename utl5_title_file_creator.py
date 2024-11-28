@@ -16,8 +16,8 @@ import re
 # -----------------------------------------------------------------------------------
 
 def create_title_file(video_title, video_dir):
-
-    sanitized_title = re.sub(r'[\\/*?:"<>|]', '', video_title) # サニタイズするファイル(video_title), ファイル名に使えない文字をｓ
+    
+    sanitized_title = re.sub(r'[\\/*?:"<>|]', '', video_title) # サニタイズするファイル(video_title), ファイル名に使えない文字を削除
     title_filename = f"{sanitized_title}.title"
     title_file_path = os.path.join(video_dir, title_filename)
 
