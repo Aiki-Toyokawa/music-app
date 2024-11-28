@@ -55,7 +55,7 @@ def main():
     # 5. サムネイルのダウンロード
     # ---------------------------
     thumbnail_url = info_data['raw_data'].get('thumbnail_url', '不明')
-    thumbnail_path = download_thumbnail(thumbnail_url, video_id, download_dir)
+    thumbnail_path = download_thumbnail(thumbnail_url, each_video_id_path)
 
 
     # ---------------------------

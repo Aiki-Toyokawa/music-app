@@ -15,7 +15,7 @@ import os
 #     str: サムネイル画像の保存パス。失敗した場合はNone。
 # -----------------------------------------------------------------
 
-def download_thumbnail(thumbnail_url, video_id, download_dir):
+def download_thumbnail(thumbnail_url, each_video_id_path):
     if not thumbnail_url or thumbnail_url == '不明':
         print("サムネイルURLが提供されていません。")
         return None
@@ -24,9 +24,8 @@ def download_thumbnail(thumbnail_url, video_id, download_dir):
         print(f"サムネイルのダウンロードを開始します...\npath: {thumbnail_url}")
         response = requests.get(thumbnail_url, timeout=10)
         response.raise_for_status()
-        video_dir = os.path.join(download_dir, video_id)
-        os.makedirs(video_dir, exist_ok=True)
-        thumbnail_path = os.path.join(video_dir, 'thumbnail.png')
+        os.makedirs(each_video_id_path, exist_ok=True)
+        thumbnail_path = os.path.join(each_video_id_path, 'thumbnail.png')
         with open(thumbnail_path, 'wb') as f:
             f.write(response.content)
         print(f"サムネイル画像のダウンロード完了: {thumbnail_path}")
