@@ -45,8 +45,8 @@ def main():
     # ---------------------------
     # 4. メタデータの抽出と保存
     # ---------------------------
-    video_dir_path = os.path.join(download_dir, video_id)
-    info_json_path = os.path.join(video_dir_path, 'info.json')
+    download_dir_path = os.path.join(download_dir, video_id)
+    info_json_path = os.path.join(download_dir_path, 'info.json')
     
     info_data = download_info(video_url, output_filename=info_json_path)
 
@@ -62,7 +62,7 @@ def main():
     # 6. タイトルファイルの作成
     # ---------------------------
     video_title = info_data['raw_data'].get('title', '無題')
-    title_file_path = create_title_file(video_title, video_dir_path)
+    title_file_path = create_title_file(video_title, download_dir_path)
 
 
     # ---------------------------
@@ -72,7 +72,7 @@ def main():
     print(f"動画ID: {video_id}")
     print(f"タイトル: {video_title}")
     print(f"メタデータ: {info_json_path}")
-    print(f"動画ファイル: {os.path.join(video_dir_path, 'music.mp4')}")
+    print(f"動画ファイル: {os.path.join(download_dir_path, 'music.mp4')}")
     print(f"サムネイル画像: {thumbnail_path}" if thumbnail_path else "サムネイル画像: なし")  # サムネイル画像あるなし三項演算子
     print(f"タイトルファイル: {title_file_path}" if title_file_path else "タイトルファイル: なし") # タイトルファイルあるなし三項演算子
 
