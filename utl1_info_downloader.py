@@ -1,7 +1,7 @@
 # utl1_info_downloader.py
 
-import yt_dlp
 import json
+import yt_dlp
 from datetime import datetime, timedelta
 
 # ----------------------------------------------------

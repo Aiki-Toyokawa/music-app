@@ -11,6 +11,7 @@ from utl2_1_format_map import EASY_FORMAT_MAP, build_format_string, VIDEO_FORMAT
 # Parameters:
 #     video_url (str): ダウンロードするYouTube動画のURL。
 #     download_dir (str): ダウンロード先のディレクトリパス。
+#     format_code (str):
 #
 # Returns:
 #     dict: ダウンロードした動画の情報辞書 (`info_dict`)。

@@ -23,6 +23,7 @@ def main():
     easy_setting = False
     format_code = '0' if easy_setting else '01234'  # 簡単設定 or 動画形式, 画質, 音声形式, 音質, コーデック
     
+    
     # ---------------------------
     # 2. 動画のダウンロード
     # ---------------------------
@@ -44,7 +45,7 @@ def main():
     # ---------------------------
     # 4. メタデータの抽出と保存
     # ---------------------------
-    each_video_id_path = os.path.join(download_dir, video_id) # download_dir + video_id
+    each_video_id_path = os.path.join(download_dir, video_id)       # download_dir + video_id
     info_json_path = os.path.join(each_video_id_path, 'info.json')
     
     info_data = download_info(video_url, output_filename=info_json_path)
