@@ -6,8 +6,8 @@ import sys
 
 from utl1_info_downloader import download_info
 from utl2_video_downloader import download_video
-from utl4_thumbnail_downloader import download_thumbnail
-from utl5_title_file_creator import create_title_file
+from utl3_thumbnail_downloader import download_thumbnail
+from utl4_title_file_creator import create_title_file
 
 # 文字化け防止のため、標準出力と標準エラー出力をUTF-8に設定
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
