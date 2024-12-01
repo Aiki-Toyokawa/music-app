@@ -19,7 +19,7 @@ def main():
     # 1. 初期設定
     # ---------------------------
     download_dir = 'dl'  # ダウンロードディレクトリ
-    video_url = 'https://www.youtube.com/watch?v=5OKqwd-eDs0&list=RD5OKqwd-eDs0&start_radio=1'  # 動画のURL
+    video_url = 'https://www.youtube.com/watch?v=M5eCWUBs-1o'  # 動画のURL
     easy_setting = False
     format_code = '0' if easy_setting else '01234'  # 簡単設定 or 動画形式, 画質, 音声形式, 音質, コーデック
     
@@ -34,29 +34,34 @@ def main():
 
 
     # ---------------------------
-    # 3. 動画IDの取得とdl動画フォルダのパス
+    # 3. 動画IDの取得
     # ---------------------------
     video_id = info_dict.get('id')
-    each_video_id_path = os.path.join(download_dir, video_id)       # download_dir + video_id  
+    if not video_id:
+        print("動画IDが取得できませんでした。")
+        sys.exit(1)
 
 
     # ---------------------------
     # 4. メタデータの抽出と保存
     # ---------------------------
-    info_json_path = create_info_json(info_dict, each_video_id_path)
+    each_video_id_path = os.path.join(download_dir, video_id)       # download_dir + video_id
+    info_json_path = os.path.join(each_video_id_path, 'info.json')
+    
+    info_data = create_info_json(video_url, output_filename=info_json_path)
 
 
     # ---------------------------
     # 5. サムネイルのダウンロード
     # ---------------------------
-    thumbnail_url = info_dict.get('thumbnail', '不明')
+    thumbnail_url = info_data['raw_data'].get('thumbnail_url', '不明')
     thumbnail_path = download_thumbnail(thumbnail_url, each_video_id_path)
 
 
     # ---------------------------
     # 6. タイトルファイルの作成
     # ---------------------------
-    video_title = info_dict.get('title', '無題')
+    video_title = info_data['raw_data'].get('title', '無題')
     title_file_path = create_title_file(video_title, each_video_id_path)
 
 

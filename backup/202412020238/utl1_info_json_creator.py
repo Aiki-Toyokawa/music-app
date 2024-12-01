@@ -1,21 +1,31 @@
 # utl1_info_json_creator.py
 
-import os
 import json
+import yt_dlp
 from datetime import datetime, timedelta
 
 # ----------------------------------------------------
 # YouTube動画の情報を抽出し、JSONファイルに保存します。
 # Parameters:
-#     info_dict (str): 情報を抽出するYouTube動画のURL。
-#     json_filename (str): 出力するJSONファイルのパス。
+#     video_url (str): 情報を抽出するYouTube動画のURL。
+#     output_filename (str): 出力するJSONファイルのパス。
 # Returns:
 #     dict: 抽出された情報データ。
 # ----------------------------------------------------
 
-def create_info_json(info_dict, each_video_id_path):
-    if not info_dict:
-        print("有効な情報辞書が提供されていません。")
+def create_info_json(video_url, output_filename="info.json"):
+
+    # yt-dlpのオプションを設定
+    ydl_opts = {
+        'skip_download': True,  # 動画をダウンロードせずに情報のみ取得
+    }
+
+    try:
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            # 動画情報を取得
+            info_dict = ydl.extract_info(video_url, download=False)
+    except yt_dlp.utils.DownloadError as e:
+        print(f"エラーが発生しました: {e}")
         return None
 
     # 必要な情報を抽出し、指定された形式に合わせる
@@ -55,7 +65,7 @@ def create_info_json(info_dict, each_video_id_path):
 
     raw_data = {
         "title": info_dict.get('title', '不明'),
-        "target_url": info_dict.get('webpage_url', '不明'),
+        "target_url": info_dict.get('webpage_url', video_url),
         "thumbnail_url": info_dict.get('thumbnail', '不明'),
         "uploader": info_dict.get('uploader', '不明'),
         "uploader_id": info_dict.get('uploader_id', '不明'),
@@ -95,15 +105,13 @@ def create_info_json(info_dict, each_video_id_path):
     }
 
     # JSONファイルに書き込む
-    info_json_path = os.path.join(each_video_id_path, 'info.json')
-
     try:
-        print(f"動画情報をjsonファイルに書き込みます...\npath: {info_json_path}")
-        with open(info_json_path, 'w', encoding='utf-8') as json_file:
+        print(f"動画情報をjsonファイルに書き込みます...\npath: {output_filename}")
+        with open(output_filename, 'w', encoding='utf-8') as json_file:
             json.dump(output_data, json_file, ensure_ascii=False, indent=4)
-        print(f"動画情報の書き込み完了: {info_json_path}")
+        print(f"動画情報の書き込み完了: {output_filename}")
     except IOError as e:
         print(f"ファイルの書き込み中にエラーが発生しました: {e}")
         return None
 
-    return info_json_path
+    return output_data
