@@ -4,7 +4,7 @@ import io
 import os
 import sys
 
-from utl1_info_downloader import download_info
+from utl1_info_json_creator import create_info_json
 from utl2_video_downloader import download_video
 from utl3_thumbnail_downloader import download_thumbnail
 from utl4_title_file_creator import create_title_file
@@ -48,7 +48,7 @@ def main():
     each_video_id_path = os.path.join(download_dir, video_id)       # download_dir + video_id
     info_json_path = os.path.join(each_video_id_path, 'info.json')
     
-    info_data = download_info(video_url, output_filename=info_json_path)
+    info_data = create_info_json(video_url, output_filename=info_json_path)
 
 
     # ---------------------------

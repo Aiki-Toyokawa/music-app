@@ -13,7 +13,7 @@ from datetime import datetime, timedelta
 #     dict: 抽出された情報データ。
 # ----------------------------------------------------
 
-def download_info(video_url, output_filename="info.json"):
+def create_info_json(video_url, output_filename="info.json"):
 
     # yt-dlpのオプションを設定
     ydl_opts = {
