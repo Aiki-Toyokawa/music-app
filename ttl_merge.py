@@ -21,16 +21,13 @@ def main():
     download_dir = 'dl'  # ダウンロードディレクトリ
     video_url = 'https://www.youtube.com/watch?v=KT_uYG-sNOk'  # 動画のURL
     easy_setting = True
-    format_code = '4' if easy_setting else '00634'  # 簡単設定 or 動画形式, 画質, 音声形式, 音質, コーデック
+    format_code = 'a' if easy_setting else '00634'  # 簡単設定 or 動画形式, 画質, 音声形式, 音質, コーデック
     
     
     # ---------------------------
     # 2. 動画のダウンロード
     # ---------------------------
-    print("動画のダウンロードを開始します...")
     info_dict = download_video(video_url, download_dir, format_code)
-    if not info_dict:   
-        sys.exit(1)
 
 
     # ---------------------------

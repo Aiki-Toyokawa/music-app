@@ -65,6 +65,7 @@ def download_video(video_url, download_dir, format_code):
     # ---------------------------
     # 2. 動画ダウンロード
     # ---------------------------
+    print("動画のダウンロードを開始します...")
     print(f"\n単一動画のダウンロードを開始します: {video_url}")
     ydl_opts = {
         'format': selected_format,
@@ -78,7 +79,7 @@ def download_video(video_url, download_dir, format_code):
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(video_url, download=True)
             if info_dict is None:
-                print(f"情報取得に失敗しました: {video_url}")
+                print(f"動画情報の取得に失敗しました: {video_url}")
                 return None
             print(f"動画のダウンロードが完了しました: {video_url}")
             return info_dict
