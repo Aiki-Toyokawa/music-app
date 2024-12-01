@@ -19,9 +19,9 @@ def main():
     # 1. 初期設定
     # ---------------------------
     download_dir = 'dl'  # ダウンロードディレクトリ
-    video_url = 'https://www.youtube.com/watch?v=5OKqwd-eDs0&list=RD5OKqwd-eDs0&start_radio=1'  # 動画のURL
-    easy_setting = False
-    format_code = '0' if easy_setting else '01234'  # 簡単設定 or 動画形式, 画質, 音声形式, 音質, コーデック
+    video_url = 'https://www.youtube.com/watch?v=KT_uYG-sNOk'  # 動画のURL
+    easy_setting = True
+    format_code = '4' if easy_setting else '00634'  # 簡単設定 or 動画形式, 画質, 音声形式, 音質, コーデック
     
     
     # ---------------------------
@@ -34,30 +34,30 @@ def main():
 
 
     # ---------------------------
-    # 3. 動画IDの取得とdl動画フォルダのパス
+    # 3. [動画IDの取得]と[動画IDからのdl動画フォルダのパスの作成]
     # ---------------------------
     video_id = info_dict.get('id')
-    each_video_id_path = os.path.join(download_dir, video_id)       # download_dir + video_id  
+    each_video_folder_path = os.path.join(download_dir, video_id)    # download_dir + video_id
 
 
     # ---------------------------
     # 4. メタデータの抽出と保存
     # ---------------------------
-    info_json_path = create_info_json(info_dict, each_video_id_path)
+    info_json_path = create_info_json(info_dict, each_video_folder_path)
 
 
     # ---------------------------
     # 5. サムネイルのダウンロード
     # ---------------------------
     thumbnail_url = info_dict.get('thumbnail', '不明')
-    thumbnail_path = download_thumbnail(thumbnail_url, each_video_id_path)
+    thumbnail_path = download_thumbnail(thumbnail_url, each_video_folder_path)
 
 
     # ---------------------------
     # 6. タイトルファイルの作成
     # ---------------------------
     video_title = info_dict.get('title', '無題')
-    title_file_path = create_title_file(video_title, each_video_id_path)
+    title_file_path = create_title_file(video_title, each_video_folder_path)
 
 
     # ---------------------------
@@ -67,7 +67,7 @@ def main():
     print(f"動画ID: {video_id}")
     print(f"タイトル: {video_title}")
     print(f"メタデータ: {info_json_path}")
-    print(f"動画ファイル: {os.path.join(each_video_id_path, 'music.mp4')}")
+    print(f"動画ファイル: {os.path.join(each_video_folder_path, 'music.mp4')}")
     print(f"サムネイル画像: {thumbnail_path}" if thumbnail_path else "サムネイル画像: なし")  # サムネイル画像あるなし三項演算子
     print(f"タイトルファイル: {title_file_path}" if title_file_path else "タイトルファイル: なし") # タイトルファイルあるなし三項演算子
 

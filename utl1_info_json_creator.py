@@ -13,7 +13,7 @@ from datetime import datetime, timedelta
 #     dict: 抽出された情報データ。
 # ----------------------------------------------------
 
-def create_info_json(info_dict, each_video_id_path):
+def create_info_json(info_dict, each_video_folder_path):
     if not info_dict:
         print("有効な情報辞書が提供されていません。")
         return None
@@ -95,7 +95,7 @@ def create_info_json(info_dict, each_video_id_path):
     }
 
     # JSONファイルに書き込む
-    info_json_path = os.path.join(each_video_id_path, 'info.json')
+    info_json_path = os.path.join(each_video_folder_path, 'info.json')
 
     try:
         print(f"動画情報をjsonファイルに書き込みます...\npath: {info_json_path}")

@@ -8,13 +8,13 @@ import requests
 #
 # Parameters:
 #     thumbnail_url (str): サムネイル画像のURL。
-#     each_video_id_path (str): 保存先のディレクトリパス（動画IDに基づく）。
+#     each_video_folder_path (str): 保存先のディレクトリパス（動画IDに基づく）。
 #
 # Returns:
 #     str: サムネイル画像の保存パス。失敗した場合はNone。
 # -----------------------------------------------------------------
 
-def download_thumbnail(thumbnail_url, each_video_id_path):
+def download_thumbnail(thumbnail_url, each_video_folder_path):
     if not thumbnail_url or thumbnail_url == '不明':
         print("サムネイルURLが提供されていません。")
         return None
@@ -24,7 +24,7 @@ def download_thumbnail(thumbnail_url, each_video_id_path):
         response = requests.get(thumbnail_url, timeout=10)
         response.raise_for_status()
         
-        thumbnail_path = os.path.join(each_video_id_path, 'thumbnail.png')
+        thumbnail_path = os.path.join(each_video_folder_path, 'thumbnail.png')
         with open(thumbnail_path, 'wb') as f:
             f.write(response.content)
         print(f"サムネイル画像のダウンロード完了: {thumbnail_path}")

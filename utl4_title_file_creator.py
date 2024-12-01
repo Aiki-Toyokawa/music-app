@@ -15,11 +15,11 @@ import re
 #    str: 作成したファイルのパス。失敗した場合はNone。
 # -----------------------------------------------------------------------------------
 
-def create_title_file(video_title, video_dir):
+def create_title_file(video_title, each_video_folder_path):
     
     sanitized_title = re.sub(r'[\\/*?:"<>|]', '', video_title) # サニタイズするファイル(video_title), ファイル名に使えない文字を削除
     title_filename = f"{sanitized_title}.title"
-    title_file_path = os.path.join(video_dir, title_filename)
+    title_file_path = os.path.join(each_video_folder_path, title_filename)
 
     try:
         print(f"タイトルファイルの作成を開始します...\npath: {title_file_path}")
