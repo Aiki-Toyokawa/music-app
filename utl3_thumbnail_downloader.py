@@ -24,11 +24,11 @@ def download_thumbnail(thumbnail_url, each_video_folder_path):
         response = requests.get(thumbnail_url, timeout=10)
         response.raise_for_status()
         
-        thumbnail_path = os.path.join(each_video_folder_path, 'thumbnail.png')
-        with open(thumbnail_path, 'wb') as f:
+        thumbnail_file_path = os.path.join(each_video_folder_path, 'thumbnail.png')
+        with open(thumbnail_file_path, 'wb') as f:
             f.write(response.content)
-        print(f"サムネイル画像のダウンロード完了: {thumbnail_path}")
-        return thumbnail_path
+        print(f"サムネイル画像のダウンロード完了: {thumbnail_file_path}")
+        return thumbnail_file_path
     
     except requests.RequestException as e:
         print(f"サムネイルのダウンロード中にエラーが発生しました: {e}")

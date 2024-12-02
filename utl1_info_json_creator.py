@@ -95,15 +95,15 @@ def create_info_json(info_dict, each_video_folder_path):
     }
 
     # JSONファイルに書き込む
-    info_json_path = os.path.join(each_video_folder_path, 'info.json')
+    info_json_file_path = os.path.join(each_video_folder_path, 'info.json')
 
     try:
-        print(f"動画情報をjsonファイルに書き込みます...\npath: {info_json_path}")
-        with open(info_json_path, 'w', encoding='utf-8') as json_file:
+        print(f"動画情報をjsonファイルに書き込みます...\npath: {info_json_file_path}")
+        with open(info_json_file_path, 'w', encoding='utf-8') as json_file:
             json.dump(output_data, json_file, ensure_ascii=False, indent=4)
-        print(f"動画情報の書き込み完了: {info_json_path}")
+        print(f"動画情報の書き込み完了: {info_json_file_path}")
     except IOError as e:
         print(f"ファイルの書き込み中にエラーが発生しました: {e}")
         return None
 
-    return info_json_path
+    return info_json_file_path

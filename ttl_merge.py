@@ -28,6 +28,7 @@ def main():
     # 2. 動画のダウンロード
     # ---------------------------
     info_dict = download_video(video_url, download_dir, format_code)
+    # print(f"{info_dict}")
 
 
     # ---------------------------
@@ -40,14 +41,14 @@ def main():
     # ---------------------------
     # 4. メタデータの抽出と保存
     # ---------------------------
-    info_json_path = create_info_json(info_dict, each_video_folder_path)
+    info_json_file_path = create_info_json(info_dict, each_video_folder_path)
 
 
     # ---------------------------
     # 5. サムネイルのダウンロード
     # ---------------------------
     thumbnail_url = info_dict.get('thumbnail', '不明')
-    thumbnail_path = download_thumbnail(thumbnail_url, each_video_folder_path)
+    thumbnail_file_path = download_thumbnail(thumbnail_url, each_video_folder_path)
 
 
     # ---------------------------
@@ -63,9 +64,9 @@ def main():
     print("\nすべての処理が完了しました。")
     print(f"動画ID: {video_id}")
     print(f"タイトル: {video_title}")
-    print(f"メタデータ: {info_json_path}")
+    print(f"メタデータ: {info_json_file_path}")
     print(f"動画ファイル: {os.path.join(each_video_folder_path, 'music.mp4')}")
-    print(f"サムネイル画像: {thumbnail_path}" if thumbnail_path else "サムネイル画像: なし")  # サムネイル画像あるなし三項演算子
+    print(f"サムネイル画像: {thumbnail_file_path}" if thumbnail_file_path else "サムネイル画像: なし")  # サムネイル画像あるなし三項演算子
     print(f"タイトルファイル: {title_file_path}" if title_file_path else "タイトルファイル: なし") # タイトルファイルあるなし三項演算子
 
 

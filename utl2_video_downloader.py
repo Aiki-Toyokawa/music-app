@@ -33,17 +33,17 @@ def download_video(video_url, download_dir, format_code):
         print(f"選択されたフォーマット: {selected_format}")
     elif len(format_code) == 5:
         # 詳細設定: 5桁のフォーマットコード
-        video_format_code = format_code[0]
-        resolution_code = format_code[1]
-        audio_format_code = format_code[2]
+        video_format_code  = format_code[0]
+        resolution_code    = format_code[1]
+        audio_format_code  = format_code[2]
         audio_quality_code = format_code[3]
-        codec_code = format_code[4]
+        codec_code         = format_code[4]
 
-        video_format = VIDEO_FORMATS.get(video_format_code)
-        resolution = VIDEO_RESOLUTIONS.get(resolution_code)
-        audio_format = AUDIO_FORMATS.get(audio_format_code)
+        video_format  = VIDEO_FORMATS.get(video_format_code)
+        resolution    = VIDEO_RESOLUTIONS.get(resolution_code)
+        audio_format  = AUDIO_FORMATS.get(audio_format_code)
         audio_quality = AUDIO_QUALITIES.get(audio_quality_code)
-        codec = CODECS.get(codec_code)
+        codec         = CODECS.get(codec_code)
 
         if not (video_format and resolution and audio_format and audio_quality and codec):
             print(f"詳細設定のフォーマットコードが無効です: {format_code}")
