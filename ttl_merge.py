@@ -28,11 +28,10 @@ def main():
     # 2. 動画のダウンロード
     # ---------------------------
     info_dict = download_video(video_url, download_dir, format_code)
-    # print(f"{info_dict}")
 
 
     # ---------------------------
-    # 3. [動画IDの取得]と[動画IDからのdl動画フォルダのパスの作成]
+    # 3. [動画IDの取得]と[動画IDからdl動画フォルダのパスの作成]
     # ---------------------------
     video_id = info_dict.get('id')
     each_video_folder_path = os.path.join(download_dir, video_id)    # download_dir + video_id
