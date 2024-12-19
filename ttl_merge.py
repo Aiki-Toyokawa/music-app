@@ -20,7 +20,7 @@ def main():
     # 1. 初期設定
     # ---------------------------
     download_dir = 'dl'  # ダウンロードディレクトリ
-    input_url = 'https://www.youtube.com/@-aohirame-6244'  # 動画のURL
+    input_url = 'https://www.youtube.com/@fig1983/videos'  # 動画のURL
     easy_setting = True
     format_code = '0' if easy_setting else '00634'  # 簡単設定 or 動画形式, 画質, 音声形式, 音質, コーデック
     
