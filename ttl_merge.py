@@ -39,8 +39,8 @@ def main():
     # ---------------------------
     # 3. 各動画を順次処理
     # ---------------------------
-    for idx, video_url in enumerate(video_urls, start=1):
-        print(f"\n===== 動画 {idx} / {len(video_urls)} =====")
+    for index, video_url in enumerate(video_urls, start=1):
+        print(f"\n===== 動画 {index} / {len(video_urls)} =====")
         print(f"URL: {video_url}")
 
         # ---------------------------
