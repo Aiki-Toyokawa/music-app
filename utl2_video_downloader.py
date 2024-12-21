@@ -69,7 +69,7 @@ def download_video(video_url, download_dir, format_code):
     print(f"\n単一動画のダウンロードを開始します: {video_url}")
     ydl_opts = {
         'format': selected_format,
-        'outtmpl': os.path.join(download_dir, '%(id)s', 'music.%(ext)s'),
+        'outtmpl': os.path.join(download_dir, '%(id)s', 'media.%(ext)s'),
         'quiet': False,
         'no_warnings': False,
         'noplaylist': True,  # 再生リストの動画を個別に扱う
