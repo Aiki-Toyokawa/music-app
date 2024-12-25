@@ -20,10 +20,10 @@ def main():
         # ---------------------------
         # 1. 初期設定
         # ---------------------------
+        format_code = '0'
         download_dir = 'dl'  # ダウンロードディレクトリ
         input_url = 'https://www.youtube.com/@boromaru'  # 動画のURL
-        easy_setting = True
-        format_code = '0' if easy_setting else '00634'  # 簡単設定 or 動画形式, 画質, 音声形式, 音質, コーデック
+
 
 
         # ---------------------------
@@ -33,6 +33,7 @@ def main():
         if not video_urls:
             print("動画URLの取得に失敗しました。")
             sys.exit(1)
+        
 
         # ---------------------------
         # 3. 各動画を順次処理
