@@ -34,3 +34,40 @@
 - 一括dlの実装
 - チャンネル全体の動画を一括dl
 - チャンネル名dlのとき、~/@channel_id/videosのURL必要だが、~/@channel_idだけでもdlできるようにする実装をする
+
+
+## git branch commit push merge
+
+### 1. メインブランチに切り替え
+git checkout main
+
+### 2. リモートメインブランチの最新を取得
+git pull origin main
+
+### 3. 新しい機能ブランチを作成して切り替え
+git checkout -b feature/add-login-functionality
+
+### 4. ファイルの編集・変更
+
+### 5. 変更をステージング
+git add .
+
+### 6. 変更をコミット
+git commit -m "Add login functionality"
+
+### 7. 新機能ブランチをリモートにプッシュ
+git push origin feature/add-login-functionality
+
+#### （GitHub上でPull Requestを作成・マージ）
+
+### 8. メインブランチに戻る
+git checkout main
+
+### 9. リモートメインブランチの最新を取得
+git pull origin main
+
+### 10. ローカルの機能ブランチを削除（任意）
+git branch -d feature/add-login-functionality
+
+### 11. リモートの機能ブランチを削除（任意）
+git push origin --delete feature/add-login-functionality
