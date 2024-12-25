@@ -25,7 +25,6 @@ def main():
         input_url = 'https://www.youtube.com/@boromaru'  # 動画のURL
 
 
-
         # ---------------------------
         # 2. 動画URLリストの取得
         # ---------------------------
