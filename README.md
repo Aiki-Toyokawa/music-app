@@ -5,7 +5,8 @@
 - update：機能修正（バグではない）
 - remove：削除（ファイル）
 - move : 移動（ファイル） 
-- update ^^ : 草生やすcommit
+
+- update : ^^ 草生やすcommit
 
 ## file name
 
@@ -47,27 +48,25 @@ git pull origin main
 ### 3. 新しい機能ブランチを作成して切り替え
 git checkout -b feature/add-login-functionality
 
-### 4. ファイルの編集・変更
-
-### 5. 変更をステージング
+### 4. 変更をステージング
 git add .
 
-### 6. 変更をコミット
+### 5. 変更をコミット
 git commit -m "Add login functionality"
 
-### 7. 新機能ブランチをリモートにプッシュ
+### 6. 新機能ブランチをリモートにプッシュ
 git push origin feature/add-login-functionality
 
 #### （GitHub上でPull Requestを作成・マージ）
 
-### 8. メインブランチに戻る
+### 7. メインブランチに戻る
 git checkout main
 
-### 9. リモートメインブランチの最新を取得
+### 8. リモートメインブランチの最新を取得
 git pull origin main
 
-### 10. ローカルの機能ブランチを削除（任意）
+### 9. ローカルの機能ブランチを削除（任意）
 git branch -d feature/add-login-functionality
 
-### 11. リモートの機能ブランチを削除（任意）
+### 10. リモートの機能ブランチを削除（任意）
 git push origin --delete feature/add-login-functionality

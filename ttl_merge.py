@@ -29,10 +29,7 @@ def main():
         # 2. 動画URLリストの取得
         # ---------------------------
         video_urls = extract_video_urls(input_url)
-        if not video_urls:
-            print("動画URLの取得に失敗しました。")
-            sys.exit(1)
-        
+                
 
         # ---------------------------
         # 3. 各動画を順次処理
@@ -40,6 +37,7 @@ def main():
         for index, video_url in enumerate(video_urls, start=1):
             print(f"\n===== 動画 {index} / {len(video_urls)} =====")
             print(f"URL: {video_url}")
+
 
             # ---------------------------
             # 3.1. 動画のダウンロード
