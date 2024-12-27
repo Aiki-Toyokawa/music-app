@@ -4,9 +4,7 @@
 - add：新規（ファイル）機能追加
 - update：機能修正（バグではない）
 - remove：削除（ファイル）
-- move : 移動（ファイル） 
-
-- update : ^^ 草生やすcommit
+- move : 移動（ファイル）
 
 ## file name
 
@@ -19,7 +17,7 @@
 - 再生数の記録
 - いいね、だめだねの記録 
 - 画質や音質のハードコーディングをやめる
-- dlの各種設定を画質だけに限定する -> easy_settingだけでよい
+
 
 優先度低い
 - リトライ機能
@@ -27,6 +25,7 @@
 
 
 やったこと☑
+- dlの各種設定を画質だけに限定する -> easy_settingだけでよい
 - video_download_pathの命名変更と引数変更
 - utl3_music_downloader.pyの削除
 - utl3を削除したことによるutlの順序変更
