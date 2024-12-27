@@ -15,7 +15,7 @@ from datetime import datetime, timedelta
 
 def create_info_json(info_dict, each_video_folder_path):
     if not info_dict:
-        print("有効な情報辞書が提供されていません。")
+        print("有効な情報が提供されていません。")
         return None
 
     # 必要な情報を抽出し、指定された形式に合わせる
