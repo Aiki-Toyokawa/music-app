@@ -22,7 +22,7 @@ def main():
         # ---------------------------
         format_code = '1'
         download_dir = 'dl'  # ダウンロードディレクトリ
-        input_url = 'https://www.youtube.com/watch?v=OTMEQDE7GtI'  # 動画のURL
+        input_url = 'https://www.youtube.com/@boromaru'  # 動画のURL
 
 
         # ---------------------------
