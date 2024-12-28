@@ -51,6 +51,7 @@ def download_video(video_url, download_dir, format_code):
         'quiet': False,
         'no_warnings': False,
         'noplaylist': True,
+        'ignorreerrors': True,
     }
 
     try:
