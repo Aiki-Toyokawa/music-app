@@ -4,11 +4,11 @@ import io
 import os
 import sys
 
-from utl1_info_json_creator import create_info_json
+from utl1_video_urls_extractor import extract_video_urls
 from utl2_video_downloader import download_video
-from utl3_thumbnail_downloader import download_thumbnail
-from utl4_title_file_creator import create_title_file
-from utl5_video_urls_extractor import extract_video_urls
+from utl3_info_json_creator import create_info_json
+from utl4_thumbnail_downloader import download_thumbnail
+from utl5_title_file_creator import create_title_file
 
 # 文字化け防止のため、標準出力と標準エラー出力をUTF-8に設定
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')

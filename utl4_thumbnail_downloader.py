@@ -1,4 +1,4 @@
-# utl3_thumbnail_downloader.py
+# utl4_thumbnail_downloader.py
 
 import os
 import requests
