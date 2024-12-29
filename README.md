@@ -15,6 +15,7 @@
 ## やること□
 - component-2を作成し、そちらでUIフロントエンドを作成していく
 - yt-dlpの標準機能のcommand-line dl parcent(とdl速度/sec)から動的に値を取得してUIで表示する
+- electron + vite + svelteで作る
 
 
 ## やったこと☑ (消化が新しい順, 積層式)
