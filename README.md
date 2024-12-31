@@ -69,3 +69,6 @@ git branch -d feature/add-login-functionality
 
 ### 10. リモートの機能ブランチを削除（任意）
 git push origin --delete feature/add-login-functionality
+
+
+Happy New Year!! 2025/01/01
