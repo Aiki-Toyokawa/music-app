@@ -15,10 +15,11 @@
 ## やること□
 - component-2を作成し、そちらでUIフロントエンドを作成していく
 - yt-dlpの標準機能のcommand-line dl parcent(とdl速度/sec)から動的に値を取得してUIで表示する
-- electron + vite + svelteで作る
+- 公開予定動画があると、それもdlしようとしてエラーで止まるのを防ぐ
 
 
 ## やったこと☑ (消化が新しい順, 積層式)
+- electron + vite + svelteで作る -> electron, vanilla JSでやる
 - utlの順番を変更
 - メンバーシップ限定動画のdl処理でエラーがでるのでdlしないようにする
 - リトライ機能 -> yt-dlpについてた
