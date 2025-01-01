@@ -46,7 +46,7 @@ git checkout main
 git pull origin main
 
 ### 3. 新しい機能ブランチを作成して切り替え
-git checkout -b feature/add-login-functionality
+git checkout -b feature/add-login-function
 
 ### 4. 変更をステージング
 git add .
