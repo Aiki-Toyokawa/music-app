@@ -22,7 +22,7 @@ def main():
         # ---------------------------
         format_code = '1'
         download_dir = 'dl'  # ダウンロードディレクトリ
-        input_url = 'https://www.youtube.com/watch?v=3T3ofoKfEoY&list=PLr6UNN7Eb0H70AZXAw-J9WtWharnAwT0u&index=47'  # 動画のURL
+        input_url = 'https://www.youtube.com/@kmnz-sub'  # 動画のURL
 
 
         # ---------------------------
