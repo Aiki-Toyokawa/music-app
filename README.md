@@ -13,7 +13,7 @@
 
 
 ## やること□ (なるべく優先度順)
-- ttl_merge.pyのmain引数は現在ハードコーディングしている
+- ttl_merge.pyのmain引数は現在ハードコーディングしているformat_code, download_dir, input_url
 - component-2を作成し、そちらでUIフロントエンドを作成していく
 - yt-dlpの標準機能のcommand-line dl parcent(とdl速度/sec)から動的に値を取得してUIで表示する
 - 中断と再会処理
