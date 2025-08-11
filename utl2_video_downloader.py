@@ -1,8 +1,8 @@
-# utl2_video_downloader.py
-
 import os
 import sys
 import yt_dlp
+from pathlib import Path
+import platform
 
 from utl2_1_format_map import FORMAT_MAP
 
@@ -41,7 +41,25 @@ def download_video(video_url, download_dir, format_code):
         sys.exit(1)
 
     # ---------------------------
-    # 2. 動画ダウンロード
+    # 2. ffmpeg の場所を決定（ローカル優先）
+    # ---------------------------
+    ffmpeg_dir_env = os.getenv("FFMPEG_DIR")
+    ffmpeg_dir_guess = (
+        Path(__file__).resolve().parent
+        / "third_party" / "ffmpeg" / "win-x64" / "current" / "bin"
+    )
+    ffmpeg_location = None
+    if ffmpeg_dir_env and Path(ffmpeg_dir_env).is_dir():
+        ffmpeg_location = ffmpeg_dir_env
+    elif ffmpeg_dir_guess.is_dir():
+        ffmpeg_location = str(ffmpeg_dir_guess)
+
+    # Windows の場合は PATH に前置
+    if ffmpeg_location and platform.system().lower().startswith("win"):
+        os.environ["PATH"] = ffmpeg_location + os.pathsep + os.environ.get("PATH", "")
+
+    # ---------------------------
+    # 3. 動画ダウンロード
     # ---------------------------
     print("動画のダウンロードを開始します...")
     print(f"\n単一動画のダウンロードを開始します: {video_url}")
@@ -54,14 +72,18 @@ def download_video(video_url, download_dir, format_code):
         'ignoreerrors': True,
     }
 
+    # ffmpeg_location が見つかった場合のみ追加
+    if ffmpeg_location:
+        ydl_opts['ffmpeg_location'] = ffmpeg_location
+
     try:
         with yt_dlp.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(video_url, download=True)
             if info_dict is None:
                 print(f"動画情報の取得に失敗しました: {video_url}")
-                sys.exit(1)  # ここでも終了させる
+                sys.exit(1)
             print(f"動画のダウンロードが完了しました: {video_url}")
             return info_dict
     except yt_dlp.utils.DownloadError as e:
         print(f"ダウンロードエラー: {e}")
-        sys.exit(1)  # エラーの際も強制終了する
+        sys.exit(1)

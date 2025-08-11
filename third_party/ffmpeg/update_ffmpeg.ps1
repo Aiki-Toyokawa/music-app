@@ -57,12 +57,12 @@ try {
   $Extracted = Get-ChildItem -LiteralPath $Tmp -Directory | Select-Object -First 1
   if (-not $Extracted) { throw ("Extracted folder not found under {0}" -f $Tmp) }
 
-  # 使いやすさのため ffmpeg.exe / ffprobe.exe をルートにも複製（任意）
-  $Bin = Join-Path $Extracted.FullName "bin"
-  if (Test-Path $Bin) {
-    Copy-Item (Join-Path $Bin "ffmpeg.exe")  $Extracted.FullName -Force
-    Copy-Item (Join-Path $Bin "ffprobe.exe") $Extracted.FullName -Force
-  }
+  # # 使いやすさのため ffmpeg.exe / ffprobe.exe をルートにも複製（任意）
+  # $Bin = Join-Path $Extracted.FullName "bin"
+  # if (Test-Path $Bin) {
+  #   Copy-Item (Join-Path $Bin "ffmpeg.exe")  $Extracted.FullName -Force
+  #   Copy-Item (Join-Path $Bin "ffprobe.exe") $Extracted.FullName -Force
+  # }
 
   # current を完全入れ替え（過去バージョンは保持しない）
   if (Test-Path $Current) { Remove-Item $Current -Recurse -Force }
