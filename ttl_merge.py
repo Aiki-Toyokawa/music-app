@@ -20,9 +20,10 @@ def main():
         # ---------------------------
         # 1. 初期設定
         # ---------------------------
-        format_code = '1'
+        format_code = '144'
         download_dir = 'dl'  # ダウンロードディレクトリ
-        input_url = 'https://www.youtube.com/watch?v=nC60qgPByXI'  # 動画のURL
+        input_url = 'https://www.youtube.com/watch?v=dROnSxQnrVU'  # 640pが480pでサムネdlされる不具合テストURL 
+        # input_url = 'https://www.youtube.com/watch?v=F9Ay74LfKd4'
 
 
         # ---------------------------
@@ -61,8 +62,8 @@ def main():
             # ---------------------------
             # 3.4. サムネイルのダウンロード
             # ---------------------------
-            thumbnail_url = info_dict.get('thumbnail', '不明')
-            thumbnail_file_path = download_thumbnail(thumbnail_url, each_video_folder_path)
+            # 一番高解像度のサムネイルを自動選択して保存
+            thumbnail_file_path = download_thumbnail(info_dict, each_video_folder_path)
 
 
             # ---------------------------
@@ -76,12 +77,12 @@ def main():
             # 3.6. 処理完了の報告
             # ---------------------------
             print("\nすべての処理が完了しました。")
-            print(f"動画ID: {video_id}")
-            print(f"タイトル: {video_title}")
-            print(f"メタデータ: {info_json_file_path}")
-            print(f"動画ファイル: {os.path.join(each_video_folder_path, 'media.mp4')}")
-            print(f"サムネイル画像: {thumbnail_file_path}" if thumbnail_file_path else "サムネイル画像: なし")  # サムネイル画像あるなし三項演算子
-            print(f"タイトルファイル: {title_file_path}" if title_file_path else "タイトルファイル: なし") # タイトルファイルあるなし三項演算子
+            print(f"動画のＩＤ　　　　: {video_id}")
+            print(f"タイトル名　　　　: {video_title}")
+            print(f"メタデータ　　　　: {info_json_file_path}")
+            print(f"動画データ　　　　: {os.path.join(each_video_folder_path, 'media.mp4')}")
+            print(f"サムネ画像　　　　: {thumbnail_file_path}" if thumbnail_file_path else "サムネイル画像: なし")  # サムネイル画像あるなし三項演算子
+            print(f"タイトルファイル名: {title_file_path}" if title_file_path else "タイトルファイル: なし") # タイトルファイルあるなし三項演算子
 
         print("\nすべての動画のダウンロードが完了しました。")
         
