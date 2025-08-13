@@ -1,0 +1,81 @@
+<mxfile host="app.diagrams.net" modified="2025-08-13T01:32:43.631734Z" agent="GPT-5 Thinking" version="22.0.8" editor="5.0.2" type="device">
+  <diagram id="arch1" name="System Architecture">
+    <mxGraphModel dx="1370" dy="793" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1920" pageHeight="1080" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Group: App (Electron) -->
+        <mxCell id="appGroup" value="music-app (Electron)" style="swimlane;rounded=1;html=1;childLayout=stackLayout;horizontal=1;startSize=28;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=0;container=1;fillColor=#f5f5f5;strokeColor=#999999;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="20" width="900" height="560" as="geometry"/>
+        </mxCell>
+        
+        <!-- UI Layer -->
+        <mxCell id="uiLayer" value="UI層 (Renderer)&#10;electron-vite / React + TypeScript" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" vertex="1" parent="appGroup">
+          <mxGeometry x="30" y="60" width="300" height="120" as="geometry"/>
+        </mxCell>
+        
+        <!-- Electron Main -->
+        <mxCell id="mainProc" value="Electron Main (Bridge)&#10;IPCブリッジ / child_process管理" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=14;" vertex="1" parent="appGroup">
+          <mxGeometry x="360" y="60" width="260" height="120" as="geometry"/>
+        </mxCell>
+        
+        <!-- Processing Layer -->
+        <mxCell id="procLayer" value="処理層 (Python Worker)&#10;electron-app-component-1&#10;• Python 3.13 (venv)&#10;• yt-dlp, ffmpeg, requests" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=14;" vertex="1" parent="appGroup">
+          <mxGeometry x="650" y="60" width="230" height="160" as="geometry"/>
+        </mxCell>
+        
+        <!-- User -->
+        <mxCell id="user" value="ユーザー" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;align=center;" vertex="1" parent="1">
+          <mxGeometry x="60" y="620" width="40" height="80" as="geometry"/>
+        </mxCell>
+        
+        <!-- External Services -->
+        <mxCell id="extSvc" value="外部サービス（音源プラットフォーム等）&#10;HTTP(S)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#f0a30a;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="980" y="60" width="280" height="120" as="geometry"/>
+        </mxCell>
+        
+        <!-- File System -->
+        <mxCell id="fs" value="ローカルファイルシステム&#10;• Music Library出力&#10;• 一時キャッシュ" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="980" y="220" width="280" height="120" as="geometry"/>
+        </mxCell>
+        
+        <!-- Edge: User -> UI -->
+        <mxCell id="e_user_ui" value="操作/入力" style="endArrow=classic;html=1;fontSize=12;" edge="1" parent="1" source="user" target="uiLayer">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Edge: UI <-> Main (IPC) -->
+        <mxCell id="e_ui_main" value="IPC(Renderer &lt;-&gt; Main)" style="endArrow=classic;startArrow=classic;html=1;fontSize=12;" edge="1" parent="appGroup" source="uiLayer" target="mainProc">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Edge: Main -> Proc (spawn/stdio or args) -->
+        <mxCell id="e_main_proc" value="spawn/exec + STDIN/STDOUT または 引数受け渡し" style="endArrow=classic;html=1;fontSize=12;" edge="1" parent="appGroup" source="mainProc" target="procLayer">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Edge: Proc -> External -->
+        <mxCell id="e_proc_ext" value="yt-dlp / requests によるHTTPアクセス" style="endArrow=classic;html=1;fontSize=12;" edge="1" parent="1" source="procLayer" target="extSvc">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Edge: Proc -> FS -->
+        <mxCell id="e_proc_fs" value="音声DL・変換(ffmpeg)・保存" style="endArrow=classic;html=1;fontSize=12;" edge="1" parent="1" source="procLayer" target="fs">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Edge: Main -> UI progress -->
+        <mxCell id="e_main_ui" value="進捗/結果通知 (IPC)" style="endArrow=classic;html=1;fontSize=12;" edge="1" parent="appGroup" source="mainProc" target="uiLayer">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Notes -->
+        <mxCell id="notes" value="設計メモ&#10;• UI層: 入力検証/表示/操作&#10;• Main: プロセス管理/IPCブリッジ/安全なI/O&#10;• 処理層: DL/変換/FS操作(最小権限)&#10;• 非同期: 進捗イベント/キャンセル対応" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#666666;dashed=1;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="20" y="720" width="880" height="120" as="geometry"/>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
