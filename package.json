@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "tree": "powershell -NoProfile -ExecutionPolicy Bypass -File ./tools/dir-output.ps1 -Root ."
+  }
+}

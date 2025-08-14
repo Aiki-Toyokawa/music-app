@@ -1,3 +1,6 @@
+# Self Setting
+tools/*.txt
+
 # OS / Editor junk
 .DS_Store
 Thumbs.db
@@ -26,6 +29,7 @@ out/
 build/
 dist/
 release/
+
 
 # apps(UI系)とservices(処理系)それぞれの.gitignoreを参照
 # Monorepo subdirs (冪等のために明示。各サブの .gitignore と重複OK)

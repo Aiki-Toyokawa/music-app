@@ -1,0 +1,16 @@
+# git
+.git/
+
+# apps
+# apps/
+apps/dist-electron/
+apps/node_modules/
+
+
+# services
+# services/
+services/__pycache__/
+services/.venv/
+services/backups/
+services/dl/
+services/third_party/ffmpeg/win-x64/
