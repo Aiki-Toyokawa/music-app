@@ -1,0 +1,39 @@
+# OS / Editor junk
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+*.code-workspace
+
+# Env files (repo には入れない)
+.env
+.env.*
+!.env.example
+
+# Logs & caches
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.eslintcache
+.cache/
+coverage/
+tmp/
+out/
+build/
+dist/
+release/
+
+# apps(UI系)とservices(処理系)それぞれの.gitignoreを参照
+# Monorepo subdirs (冪等のために明示。各サブの .gitignore と重複OK)
+# apps/node_modules/
+# apps/dist/
+# apps/release/
+# services/.venv/
+# services/__pycache__/
+# services/.mypy_cache/
+# services/.pytest_cache/
+# services/dist/

@@ -1,3 +1,9 @@
+## バックアップ 20250813 内容
+
+jsonファイル出力オンリー
+ローカルffmpegとvenvでpython runtime以外のグローバル依存を排除
+
+
 ## pull後の環境構築
 ```
 # python の存在・バージョン確認(入っている python 一覧表示)
